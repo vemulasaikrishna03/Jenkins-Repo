@@ -2,6 +2,9 @@ pipeline {
     agent any
 
     stages {
+        stage("hi") {
+            echo "hello world"
+        }
         stage('Checkout Code') {
             steps {
                 checkout scm
