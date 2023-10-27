@@ -1,3 +1,4 @@
+import groovy.json.JsonSlurperClassic  // Import statement
 pipeline {
     agent any
 
@@ -10,7 +11,7 @@ pipeline {
         stage('Read and Print JSON') {
             steps {
                 script {
-                    import groovy.json.JsonSlurperClassic  // Import statement
+                    
                     def jsonData = readFile(file: 'data.json')
                     def jsonSlurper = new JsonSlurperClassic()
                     def parsedData = jsonSlurper.parseText(jsonData)
