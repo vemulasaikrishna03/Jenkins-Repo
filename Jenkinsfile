@@ -2,20 +2,18 @@ pipeline {
     agent any
 
     stages {
-        stage('Set Branch Name') {
+        stage('Read and Print JSON') {
             steps {
                 script {
-                    def branchFile = readFile('path')
-                    def branchName = branchFile.trim()
-                    env.BRANCH_NAME = branchName
+                    def jsonData = readFile(file: './data.json')
+                    def jsonSlurper = new JsonSlurperClassic()
+                    def parsedData = jsonSlurper.parseText(jsonData)
+                    echo "JSON Data:"
+                    echo "Name: ${parsedData.name}"
+                    echo "Email: ${parsedData.email}"
+                    echo "Age: ${parsedData.age}"
+                    echo "City: ${parsedData.city}"
                 }
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo "Building branch: ${env.BRANCH_NAME}"
-                // steps
             }
         }
     }
