@@ -10,7 +10,7 @@ pipeline {
         stage('Read and Print JSON') {
             steps {
                 script {
-                    def jsonData = readFile(file: './data.json')
+                    def jsonData = readFile(file: 'data.json')
                     def jsonSlurper = new JsonSlurperClassic()
                     def parsedData = jsonSlurper.parseText(jsonData)
                     echo "JSON Data:"
