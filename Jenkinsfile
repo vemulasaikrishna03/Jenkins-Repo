@@ -17,9 +17,7 @@ pipeline {
                     def parsedData = jsonSlurper.parseText(jsonData)
                     echo "JSON Data:"
                     echo "Name: ${parsedData.name}"
-                    echo "Email: ${parsedData.email}"
-                    echo "Age: ${parsedData.age}"
-                    echo "City: ${parsedData.city}"
+                    echo "info: ${parsedData.info}"
                 }
             }
         }
